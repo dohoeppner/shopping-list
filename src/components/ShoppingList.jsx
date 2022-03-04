@@ -20,23 +20,13 @@ export function ShoppingList() {
     FetchShoppingItems();
   }, []);
 
-  console.log(shoppingItems);
-
   return (
     <>
       <div>
         <ShoppingListHeader />
       </div>
       <div>
-        <ShoppingItemList />
-      </div>
-
-      <div>
-        <ul>
-          {shoppingItems.map((item) => (
-            <li key={item.name.de}>{item.name.de}</li>
-          ))}
-        </ul>
+        <ShoppingItemList shoppingItems={shoppingItems} />
       </div>
     </>
   );
