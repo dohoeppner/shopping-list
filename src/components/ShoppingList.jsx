@@ -1,16 +1,13 @@
-import { ShoppingListHeader } from "./ShoppingListHeader";
 import { ShoppingItemList } from "./ShoppingItemList";
 import { useEffect, useState } from "react";
 
-export function ShoppingList() {
+export function ShoppingList({ seachText, setActiveItems, activeItems, setSearchText }) {
   const [shoppingItems, setShoppingItems] = useState([]);
 
   useEffect(() => {
     async function FetchShoppingItems() {
       try {
-        const response = await fetch(
-          "https://fetch-me.vercel.app/api/shopping/items"
-        );
+        const response = await fetch("https://fetch-me.vercel.app/api/shopping/items");
         const data = await response.json();
         setShoppingItems(data.data);
       } catch (error) {
@@ -23,10 +20,13 @@ export function ShoppingList() {
   return (
     <>
       <div>
-        <ShoppingListHeader />
-      </div>
-      <div>
-        <ShoppingItemList shoppingItems={shoppingItems} />
+        <ShoppingItemList
+          shoppingItems={shoppingItems}
+          seachText={seachText}
+          setActiveItems={setActiveItems}
+          activeItems={activeItems}
+          setSearchText={setSearchText}
+        />
       </div>
     </>
   );

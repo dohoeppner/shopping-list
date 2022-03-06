@@ -1,9 +1,12 @@
-import './ShoppingItem.css'
+import "./ShoppingItem.css";
 
-export function ShoppingItem({ item }) {
+export function ShoppingItem({ item, setActiveItems, activeItems }) {
+  function handleItemClick() {
+    setActiveItems([...activeItems, item]);
+  }
   return (
-  <div className="shopping-item">
-    {item.name.de}
-  </div>
+    <button className="shopping-item" onClick={handleItemClick}>
+      {item.name.de}
+    </button>
   );
 }
