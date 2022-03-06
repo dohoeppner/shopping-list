@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ShoppingList } from "./components/ShoppingList";
-import { SearchBox } from "./components/SearchBox";
+import {SearchHeader} from './components/SearchHeader';
+import {SearchBar} from './components/SearchBar';
 
 function App() {
   return (
@@ -9,7 +10,12 @@ function App() {
         <ShoppingList />
       </article>
       <article>
-        <SearchBox />
+        <div>
+          <SearchHeader />
+        </div>
+        <div>
+          <SearchBar />
+        </div>
       </article>
     </div>
   );
