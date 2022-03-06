@@ -1,11 +1,14 @@
 export function ActiveShoppingList({ activeItems }) {
   return (
-    <div className="shoppin-items">
-      {activeItems.map((item, index) => (
-        <div key={index}>
-          <p>{item.name.de}</p>
-        </div>
-      ))}
-    </div>
+    <>
+      <h3>Shopping List</h3>
+      <div className="shopping-items">
+        {activeItems.map((item, index) => (
+          <button key={item.name.de + index} className="shopping-item">
+            {item.name.de}
+          </button>
+        ))}
+      </div>
+    </>
   );
 }

@@ -1,7 +1,7 @@
 import { ShoppingItemList } from "./ShoppingItemList";
 import { useEffect, useState } from "react";
 
-export function ShoppingList({ seachText, setActiveItems, activeItems, setSearchText }) {
+export function ShoppingList({ searchText, setActiveItems, activeItems, setSearchText }) {
   const [shoppingItems, setShoppingItems] = useState([]);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export function ShoppingList({ seachText, setActiveItems, activeItems, setSearch
       <div>
         <ShoppingItemList
           shoppingItems={shoppingItems}
-          seachText={seachText}
+          searchText={searchText}
           setActiveItems={setActiveItems}
           activeItems={activeItems}
           setSearchText={setSearchText}
