@@ -6,7 +6,6 @@ import "./App.css";
 
 export function App() {
   const initial = [];
-
   const [searchText, setSearchText] = useState("");
   const [activeItems, setActiveItems] = useState(() => getLocalStorage("items") ?? initial);
 
@@ -24,11 +23,11 @@ export function App() {
           <h3>What do you want to buy?</h3>
         </div>
         <div>
-          <SearchBar setSearchText={setSearchText} />
+          <SearchBar setSearchText={setSearchText} searchText={searchText} />
         </div>
       </article>
       <article>
-        <ShoppingList searchText={searchText} setActiveItems={setActiveItems} activeItems={activeItems} />
+        <ShoppingList searchText={searchText} setActiveItems={setActiveItems} activeItems={activeItems} setSearchText={setSearchText} />
       </article>
     </div>
   );
