@@ -1,12 +1,19 @@
 import { ShoppingList } from "./components/ShoppingList";
 import { SearchBar } from "./components/SearchBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ActiveShoppingList } from "./components/ActiveShoppingList";
-import './App.css';
+import "./App.css";
 
 export function App() {
+  const initial = [];
+
   const [searchText, setSearchText] = useState("");
-  const [activeItems, setActiveItems] = useState([]);
+  const [activeItems, setActiveItems] = useState(() => getLocalStorage("items") ?? initial);
+
+  useEffect(() => {
+    setLocalStorage("items", activeItems);
+  }, [activeItems]);
+
   return (
     <div className="App">
       <article>
@@ -25,4 +32,12 @@ export function App() {
       </article>
     </div>
   );
+}
+
+function getLocalStorage(key) {
+  return JSON.parse(localStorage.getItem(key));
+}
+
+function setLocalStorage(key, value) {
+  return localStorage.setItem(key, JSON.stringify(value));
 }

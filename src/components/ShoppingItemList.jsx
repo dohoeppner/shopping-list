@@ -1,5 +1,6 @@
 import { ShoppingItem } from "./ShoppingItem";
 import './ShoppingItemList.css'
+import {search} from 'fast-fuzzy'
 
 export function ShoppingItemList({ shoppingItems, searchText, setActiveItems, activeItems }) {
   return (
