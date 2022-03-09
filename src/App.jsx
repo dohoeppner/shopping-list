@@ -1,5 +1,5 @@
 import { ShoppingList } from "./components/ShoppingList";
-import { SearchBar } from "./components/SearchBar";
+import { SearchBar } from "./components/SearchBar/SearchBar";
 import { useState, useEffect } from "react";
 import { ActiveShoppingList } from "./components/ActiveShoppingList";
 import "./App.css";
@@ -7,7 +7,9 @@ import "./App.css";
 export function App() {
   const initial = [];
   const [searchText, setSearchText] = useState("");
-  const [activeItems, setActiveItems] = useState(() => getLocalStorage("items") ?? initial);
+  const [activeItems, setActiveItems] = useState(
+    () => getLocalStorage("items") ?? initial
+  );
 
   useEffect(() => {
     setLocalStorage("items", activeItems);
@@ -16,7 +18,10 @@ export function App() {
   return (
     <div className="App">
       <article>
-        <ActiveShoppingList setActiveItems={setActiveItems} activeItems={activeItems} />
+        <ActiveShoppingList
+          setActiveItems={setActiveItems}
+          activeItems={activeItems}
+        />
       </article>
       <article>
         <div>
@@ -27,7 +32,12 @@ export function App() {
         </div>
       </article>
       <article>
-        <ShoppingList searchText={searchText} setActiveItems={setActiveItems} activeItems={activeItems} setSearchText={setSearchText} />
+        <ShoppingList
+          searchText={searchText}
+          setActiveItems={setActiveItems}
+          activeItems={activeItems}
+          setSearchText={setSearchText}
+        />
       </article>
     </div>
   );
